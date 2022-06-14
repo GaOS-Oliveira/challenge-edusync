@@ -37,6 +37,32 @@ namespace IMCcalculatorLibraries
             return imc;
         }
 
+        public string IndicateClassification(double imc)
+        {
+            string classification = "";
+            
+            switch (imc)
+            {
+                case < 20:
+                    classification = "Abaixo do Peso Ideal";
+                    break;
+                case < 25:
+                    classification = "Peso Normal";
+                    break;
+                case < 30:
+                    classification = "Excesso de Peso";
+                    break;
+                case < 36:
+                    classification = "Obesidade";
+                    break;
+                case >= 36:
+                    classification = "Super Obesidade";
+                    break;
+            }
+
+            return classification;
+        }
+
         public string IndicateRisks(double imc)
         {
             string risks = "";
