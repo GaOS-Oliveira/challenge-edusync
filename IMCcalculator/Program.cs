@@ -16,6 +16,7 @@ static void Diagnostic()
         Console.Write("Nome: ");
         var name_temp = Console.ReadLine();
 
+        // Correção da Exceção CS8600
         if (name_temp is not null && name_temp.Length > 0)
         {
             name = name_temp;
@@ -33,10 +34,12 @@ static void Diagnostic()
         Console.Write("Sexo (Masculino ou Feminino): ");
         var sex_temp = Console.ReadLine();
 
+        // Correção da Exceção CS8600
         if (sex_temp is not null)
         {
             sex = sex_temp.ToLower();
         }
+
         if (sex == "masculino" || sex == "feminino")
         {
             validation = false;
@@ -50,6 +53,8 @@ static void Diagnostic()
     while (validation)
     {
         Console.Write("Idade: ");
+
+        // Correção da Exceção CS8600
         var age_temp = Console.ReadLine();
         bool validator = Int32.TryParse(age_temp, out age);
 
@@ -64,6 +69,8 @@ static void Diagnostic()
     while (validation)
     {
         Console.Write("Altura (em centimetros [cm]): ");
+
+        // Correção da Exceção CS8600
         var height_temp = Console.ReadLine();
         bool validator = double.TryParse(height_temp, out height);
 
@@ -78,6 +85,8 @@ static void Diagnostic()
     while (validation)
     {
         Console.Write("Peso (em quilogramas [Kg]): ");
+
+        // Correção da Exceção CS8600
         var weight_temp = Console.ReadLine();
         bool validator = double.TryParse(weight_temp, out weight);
 
