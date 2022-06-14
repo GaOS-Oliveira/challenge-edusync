@@ -14,10 +14,11 @@ static void Diagnostic()
     while (validation)
     {
         Console.Write("Nome: ");
-        name = Console.ReadLine();
+        var name_temp = Console.ReadLine();
 
-        if (name.Length > 0)
+        if (name_temp is not null && name_temp.Length > 0)
         {
+            name = name_temp;
             validation = false;
         }
     }
@@ -30,9 +31,12 @@ static void Diagnostic()
     while (validation)
     {
         Console.Write("Sexo (Masculino ou Feminino): ");
-        sex = Console.ReadLine();
-        sex = sex.ToLower();
-        
+        var sex_temp = Console.ReadLine();
+
+        if (sex_temp is not null)
+        {
+            sex = sex_temp.ToLower();
+        }
         if (sex == "masculino" || sex == "feminino")
         {
             validation = false;
@@ -46,7 +50,7 @@ static void Diagnostic()
     while (validation)
     {
         Console.Write("Idade: ");
-        string age_temp = Console.ReadLine();
+        var age_temp = Console.ReadLine();
         bool validator = Int32.TryParse(age_temp, out age);
 
         if (age > 0 && validator == true)
@@ -60,7 +64,7 @@ static void Diagnostic()
     while (validation)
     {
         Console.Write("Altura (em centimetros [cm]): ");
-        string height_temp = Console.ReadLine();
+        var height_temp = Console.ReadLine();
         bool validator = double.TryParse(height_temp, out height);
 
         if (height > 0 && validator == true)
@@ -74,7 +78,7 @@ static void Diagnostic()
     while (validation)
     {
         Console.Write("Peso (em quilogramas [Kg]): ");
-        string weight_temp = Console.ReadLine();
+        var weight_temp = Console.ReadLine();
         bool validator = double.TryParse(weight_temp, out weight);
 
         if (weight > 0 && validator == true)
