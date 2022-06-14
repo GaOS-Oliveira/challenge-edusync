@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMCcalculator", "IMCcalculator\IMCcalculator.csproj", "{E17F1263-7AE2-4C87-88A1-226C13F715EF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMCcalculatorLibraries", "IMCcalculatorLibraries\IMCcalculatorLibraries.csproj", "{AE4B9E5F-E1EB-4229-9550-6BD744ADD605}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{E17F1263-7AE2-4C87-88A1-226C13F715EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E17F1263-7AE2-4C87-88A1-226C13F715EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E17F1263-7AE2-4C87-88A1-226C13F715EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE4B9E5F-E1EB-4229-9550-6BD744ADD605}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE4B9E5F-E1EB-4229-9550-6BD744ADD605}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE4B9E5F-E1EB-4229-9550-6BD744ADD605}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE4B9E5F-E1EB-4229-9550-6BD744ADD605}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
