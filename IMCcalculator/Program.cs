@@ -1,37 +1,55 @@
 ﻿using IMCcalculatorLibraries;
+using System.Globalization;
 
 static void Diagnostic()
 {
     Console.WriteLine("**********************");
-    Console.WriteLine("DIAGNÓSTICO PRÉVIO");
+    Console.WriteLine("DIAGNÓSTICO PRÉVIO\n");
 
     var calc = new Calculator();
-    
-    Console.Write("\nNome: ");
-    string name = Console.ReadLine();
 
     bool validation = true;
+
+    string name = "";
+    while (validation)
+    {
+        Console.Write("Nome: ");
+        name = Console.ReadLine();
+
+        if (name.Length > 0)
+        {
+            validation = false;
+        }
+    }
+
+    TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+    name = textInfo.ToTitleCase(name.ToLower());
+
+    validation = true;
     string sex = "";
     while (validation)
     {
         Console.Write("Sexo (Masculino ou Feminino): ");
         sex = Console.ReadLine();
-        string sex_t = sex.ToLower();
+        sex = sex.ToLower();
         
-        if (sex_t == "masculino" || sex_t == "feminino")
+        if (sex == "masculino" || sex == "feminino")
         {
             validation = false;
         }
     }
+
+    sex = textInfo.ToTitleCase(sex);
 
     validation = true;
     int age = 0;
     while (validation)
     {
         Console.Write("Idade: ");
-        age = int.Parse(Console.ReadLine());
+        string age_temp = Console.ReadLine();
+        bool validator = Int32.TryParse(age_temp, out age);
 
-        if (age > 0)
+        if (age > 0 && validator == true)
         {
             validation = false;
         }
@@ -42,9 +60,10 @@ static void Diagnostic()
     while (validation)
     {
         Console.Write("Altura (em centimetros [cm]): ");
-        height = double.Parse(Console.ReadLine());
+        string height_temp = Console.ReadLine();
+        bool validator = double.TryParse(height_temp, out height);
 
-        if (height > 0)
+        if (height > 0 && validator == true)
         {
             validation = false;
         }
@@ -55,9 +74,10 @@ static void Diagnostic()
     while (validation)
     {
         Console.Write("Peso (em quilogramas [Kg]): ");
-        weight = double.Parse(Console.ReadLine());
+        string weight_temp = Console.ReadLine();
+        bool validator = double.TryParse(weight_temp, out weight);
 
-        if (weight > 0)
+        if (weight > 0 && validator == true)
         {
             validation = false;
         }
