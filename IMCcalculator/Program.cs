@@ -6,10 +6,13 @@ static void Diagnostic()
     Console.WriteLine("**********************");
     Console.WriteLine("DIAGNÓSTICO PRÉVIO\n");
 
+    // Variável de objeto contendo as funções para cálculo do IMC:
     var calc = new Calculator();
 
+    // Variável para validação de valores das outras variáveis:
     bool validation = true;
 
+    #region "Variavel 'name'"
     string name = "";
     while (validation)
     {
@@ -20,13 +23,15 @@ static void Diagnostic()
         if (name_temp is not null && name_temp.Length > 0)
         {
             name = name_temp;
-            validation = false;
+            validation = false; // Se o valor for válido
         }
     }
 
     TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
     name = textInfo.ToTitleCase(name.ToLower());
+    #endregion
 
+    #region "Variável 'sex'"
     validation = true;
     string sex = "";
     while (validation)
@@ -42,12 +47,14 @@ static void Diagnostic()
 
         if (sex == "masculino" || sex == "feminino")
         {
-            validation = false;
+            validation = false; // Se o valor for válido
         }
     }
 
     sex = textInfo.ToTitleCase(sex);
+    #endregion
 
+    #region "Variável 'age'"
     validation = true;
     int age = 0;
     while (validation)
@@ -60,10 +67,12 @@ static void Diagnostic()
 
         if (age > 0 && validator == true)
         {
-            validation = false;
+            validation = false; // Se o valor for válido
         }
     }
+    #endregion
 
+    #region "Variável 'height'"
     validation = true;
     double height = 0.0;
     while (validation)
@@ -76,10 +85,12 @@ static void Diagnostic()
 
         if (height > 0 && validator == true)
         {
-            validation = false;
+            validation = false; // Se o valor for válido
         }
     }
+    #endregion
 
+    #region "Variável 'weight'"
     validation = true;
     double weight = 0.0;
     while (validation)
@@ -92,19 +103,25 @@ static void Diagnostic()
 
         if (weight > 0 && validator == true)
         {
-            validation = false;
+            validation = false; // Se o valor for válido
         }
     }
-    
+    #endregion
+
+    // Categoria por idade:
     string category = calc.SelectCategory(age);
 
+    // Cálculo do IMC e indicação da classificação do valor:
     double imc = calc.CalculateIMC(weight, height);
     string classification = calc.IndicateClassification(imc);
 
+    // Indicação dos riscos:
     string risk = calc.IndicateRisks(imc);
 
+    // Indicação das recomendações:
     string recommendation = calc.RecommendSolution(imc);
 
+    #region "Print diagnostic"
     Console.WriteLine("\n***************************************************");
     Console.WriteLine("DIAGNÓSTICO PRÉVIO");
     Console.Write($"\nNome: {name}");
@@ -118,6 +135,7 @@ static void Diagnostic()
     Console.WriteLine($"\nRiscos: {risk}");
     Console.WriteLine($"\nRecomendação inicial: {recommendation}");
     Console.WriteLine("\n***************************************************");
+    #endregion
 }
 
 Diagnostic();

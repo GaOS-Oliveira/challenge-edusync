@@ -8,6 +8,7 @@ namespace IMCcalculatorLibraries
 {
     public class Calculator
     {
+        
         public string SelectCategory(int age)
         {
             string category = "";
