@@ -67,9 +67,10 @@ static void Diagnostic()
 
         // Correção da Exceção CS8600
         var age_temp = Console.ReadLine();
-        #pragma warning disable CS8602 // Desabilitar alerta de uma referência possivelmente nula.
-        bool validator = double.TryParse(age_temp.Replace(",", "."), NumberStyles.Number, CultureInfo.InvariantCulture, out age);
-        #pragma warning restore CS8602 // O próximo 'if' corrige este problema, mas o visual studio não reconhece.
+        #pragma warning disable CS8604 // Desabilitar alerta de uma referência possivelmente nula.
+        bool validator = calc.isConversable(age_temp);
+        age = calc.convertStringDouble(age_temp);
+        #pragma warning restore CS8604 // O próximo 'if' corrige este problema, mas o visual studio não reconhece.
 
         if (age > 0.0 && validator == true)
             {
@@ -102,9 +103,10 @@ static void Diagnostic()
         // Correção da Exceção CS8600
         var height_temp = Console.ReadLine();
 
-        #pragma warning disable CS8602 // Desabilitar alerta de uma referência possivelmente nula.
-        bool validator = double.TryParse(height_temp.Replace(",", "."), NumberStyles.Number, CultureInfo.InvariantCulture, out height);
-        #pragma warning restore CS8602 // O próximo 'if' corrige este problema, mas o visual studio não reconhece.
+        #pragma warning disable CS8604 // Desabilitar alerta de uma referência possivelmente nula.
+        bool validator = calc.isConversable(height_temp);
+        height = calc.convertStringDouble(height_temp);
+        #pragma warning restore CS8604 // O próximo 'if' corrige este problema, mas o visual studio não reconhece.
 
         if (height > 0 && validator == true)
         {
@@ -122,9 +124,10 @@ static void Diagnostic()
 
         // Correção da Exceção CS8600
         var weight_temp = Console.ReadLine();
-        #pragma warning disable CS8602 // Desabilitar alerta de uma referência possivelmente nula.
-        bool validator = double.TryParse(weight_temp.Replace(",", "."), NumberStyles.Number, CultureInfo.InvariantCulture, out weight);
-        #pragma warning restore CS8602 // O próximo 'if' corrige este problema, mas o visual studio não reconhece.
+        #pragma warning disable CS8604 // Desabilitar alerta de uma referência possivelmente nula.
+        bool validator = calc.isConversable(weight_temp);
+        weight = calc.convertStringDouble(weight_temp);
+        #pragma warning restore CS8604 // O próximo 'if' corrige este problema, mas o visual studio não reconhece.
 
         if (weight > 0 && validator == true)
         {

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
+
 
 namespace IMCcalculatorLibraries
 {
@@ -114,6 +116,19 @@ namespace IMCcalculatorLibraries
             }
 
             return recommendation;
+        }
+
+        public bool isConversable(string to_convert)
+        {
+            double converted;
+            var temp = double.TryParse(to_convert.Replace(",", "."), NumberStyles.Number, CultureInfo.InvariantCulture, out converted);
+            return temp;
+        }
+
+        public double convertStringDouble(string to_convert)
+        {
+            var temp = double.TryParse(to_convert.Replace(",", "."), NumberStyles.Number, CultureInfo.InvariantCulture, out double converted);
+            return converted;
         }
     }
 }
