@@ -12,6 +12,9 @@ static void Diagnostic()
     // Variável para validação de valores das outras variáveis:
     bool validation = true;
 
+    // TextInfo var para formatação de texto:
+    TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+
     #region "Variavel 'name'"
     string name = "";
     while (validation)
@@ -27,7 +30,6 @@ static void Diagnostic()
         }
     }
 
-    TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
     name = textInfo.ToTitleCase(name.ToLower());
     #endregion
 
@@ -56,19 +58,37 @@ static void Diagnostic()
 
     #region "Variável 'age'"
     validation = true;
-    int age = 0;
+    double age = 0.0;
+    double age_months;
+    int age_years;
     while (validation)
     {
         Console.Write("Idade: ");
 
         // Correção da Exceção CS8600
         var age_temp = Console.ReadLine();
-        bool validator = Int32.TryParse(age_temp, out age);
+        #pragma warning disable CS8602 // Desabilitar alerta de uma referência possivelmente nula.
+        bool validator = double.TryParse(age_temp.Replace(",", "."), NumberStyles.Number, CultureInfo.InvariantCulture, out age);
+        #pragma warning restore CS8602 // O próximo 'if' corrige este problema, mas o visual studio não reconhece.
 
-        if (age > 0 && validator == true)
-        {
-            validation = false; // Se o valor for válido
-        }
+        if (age > 0.0 && validator == true)
+            {
+                validation = false; // Se o valor for válido
+            }
+
+    }
+
+    age_years = (int)age;
+    age_months = (age - Math.Truncate(age)) * 12;
+
+    string age_str;
+    if (age_months > 0)
+    {
+        age_str = $"\nIdade: {age_years} anos e {age_months} meses";
+    }
+    else
+    {
+        age_str = $"\nIdade: {age_years} anos";
     }
     #endregion
 
@@ -81,7 +101,10 @@ static void Diagnostic()
 
         // Correção da Exceção CS8600
         var height_temp = Console.ReadLine();
-        bool validator = double.TryParse(height_temp, out height);
+
+        #pragma warning disable CS8602 // Desabilitar alerta de uma referência possivelmente nula.
+        bool validator = double.TryParse(height_temp.Replace(",", "."), NumberStyles.Number, CultureInfo.InvariantCulture, out height);
+        #pragma warning restore CS8602 // O próximo 'if' corrige este problema, mas o visual studio não reconhece.
 
         if (height > 0 && validator == true)
         {
@@ -99,7 +122,9 @@ static void Diagnostic()
 
         // Correção da Exceção CS8600
         var weight_temp = Console.ReadLine();
-        bool validator = double.TryParse(weight_temp, out weight);
+        #pragma warning disable CS8602 // Desabilitar alerta de uma referência possivelmente nula.
+        bool validator = double.TryParse(weight_temp.Replace(",", "."), NumberStyles.Number, CultureInfo.InvariantCulture, out weight);
+        #pragma warning restore CS8602 // O próximo 'if' corrige este problema, mas o visual studio não reconhece.
 
         if (weight > 0 && validator == true)
         {
@@ -126,8 +151,8 @@ static void Diagnostic()
     Console.WriteLine("DIAGNÓSTICO PRÉVIO");
     Console.Write($"\nNome: {name}");
     Console.Write($"\nSexo: {sex}");
-    Console.Write($"\nIdade: {age}");
-    Console.Write($"\nAltura: {height/100} m");
+    Console.Write(age_str);
+    Console.Write($"\nAltura: {height/100:0.00} m");
     Console.Write($"\nPeso: {weight} Kg");
     Console.WriteLine($"\nCategoria: {category}");
     Console.WriteLine($"\nIMC Desejável: entre 20 e 24");

@@ -9,22 +9,22 @@ namespace IMCcalculatorLibraries
     public class Calculator
     {
         
-        public string SelectCategory(int age)
+        public string SelectCategory(double age)
         {
             string category = "";
 
             switch (age)
             {
-                case < 12:
+                case < 12.0:
                     category = "Infantil";
                     break;
-                case < 21:
+                case < 21.0:
                     category = "Juvenil";
                     break;
-                case < 66:
+                case < 66.0:
                     category = "Adulto";
                     break;
-                case >= 66:
+                case >= 66.0:
                     category = "Idoso";
                     break;
             }
