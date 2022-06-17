@@ -37,9 +37,10 @@ namespace IMCcalculatorLibraries
         {
             bool validation = true;
             string sex = "";
+            string message = "Sexo (Masculino ou Feminino): ";
             while (validation)
             {
-                Console.Write("Sexo (Masculino ou Feminino): ");
+                Console.Write(message);
                 var sex_temp = Console.ReadLine();
 
                 // Correção da Exceção CS8600
@@ -52,6 +53,8 @@ namespace IMCcalculatorLibraries
                 {
                     validation = false; // Se o valor for válido
                 }
+
+                message = "[Valor Inválido]\n\nSexo (Masculino ou Feminino): ";
             }
 
             if (sex == "f")
@@ -73,9 +76,10 @@ namespace IMCcalculatorLibraries
             double age = 0.0;
             int age_months;
             int age_years;
+            string message = "Idade: ";
             while (validation)
             {
-                Console.Write("Idade: ");
+                Console.Write(message);
 
                 // Correção da Exceção CS8600
                 var age_temp = Console.ReadLine();
@@ -84,10 +88,12 @@ namespace IMCcalculatorLibraries
                 age = calc.convertStringDouble(age_temp);
                 #pragma warning restore CS8604 // O próximo 'if' corrige este problema, mas o visual studio não reconhece.
 
-                if (age >= 1.0 && validator == true)
+                if (age >= 1.0 && age < 130 && validator == true)
                 {
                     validation = false; // Se o valor for válido
                 }
+
+                message = "[Valor Inválido]\n\nIdade: ";
             }
 
             age_years = (int)age;
@@ -115,9 +121,10 @@ namespace IMCcalculatorLibraries
         {
             bool validation = true;
             double height = 0.0;
+            string message = "Altura (em centímetros [cm]): ";
             while (validation)
             {
-                Console.Write("Altura (em centimetros [cm]): ");
+                Console.Write(message);
 
                 // Correção da Exceção CS8600
                 var height_temp = Console.ReadLine();
@@ -131,6 +138,8 @@ namespace IMCcalculatorLibraries
                 {
                     validation = false; // Se o valor for válido
                 }
+
+                message = "[Valor Inválido]\n\nAltura (em centímetros [cm]): ";
             }
 
             return height;
@@ -140,9 +149,10 @@ namespace IMCcalculatorLibraries
         {
             bool validation = true;
             double weight = 0.0;
+            string message = "Peso (em quilogramas [Kg]): ";
             while (validation)
             {
-                Console.Write("Peso (em quilogramas [Kg]): ");
+                Console.Write(message);
 
                 // Correção da Exceção CS8600
                 var weight_temp = Console.ReadLine();
@@ -155,6 +165,8 @@ namespace IMCcalculatorLibraries
                 {
                     validation = false; // Se o valor for válido
                 }
+
+                message = "[Valor Inválido]\n\nPeso (em quilogramas [Kg]): ";
             }
 
             return weight;

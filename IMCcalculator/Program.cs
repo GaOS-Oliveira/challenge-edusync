@@ -35,9 +35,10 @@ static void getDiagnostic()
     #region "Confirmation"
     bool validation = true;
     string input_confirm = "";
+    string message = "\nDeseja alterar os dados? [S]/[N] ";
     while (validation)
     {
-        Console.Write("\nDeseja alterar os dados? [S]/[N] ");
+        Console.Write(message);
         var input_temp = Console.ReadLine();
 
         // Correção da Exceção CS8600
@@ -64,11 +65,12 @@ static void getDiagnostic()
         {
             getDiagnostic();
         }
-        else
+        else if (input_confirm == "n")
         {
             print.printDiagnostic(name, sex, age_str, height, weight, category, imc, classification, risk, recommendation);
-
         }
+
+        message = "[Valor Inválido]\n\nDeseja alterar os dados? [S]/[N] ";
     }
     #endregion
 }
