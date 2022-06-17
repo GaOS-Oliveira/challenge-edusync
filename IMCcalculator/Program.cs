@@ -37,7 +37,7 @@ static void getDiagnostic()
     string input_confirm = "";
     while (validation)
     {
-        Console.Write("\nDeseja alterar os dados? [S]/[N]");
+        Console.Write("\nDeseja alterar os dados? [S]/[N] ");
         var input_temp = Console.ReadLine();
 
         // Correção da Exceção CS8600
@@ -46,9 +46,18 @@ static void getDiagnostic()
             input_confirm = input_temp.ToLower();
         }
 
-        if (input_confirm == "s" || input_confirm == "n")
+        if (input_confirm == "s" || input_confirm == "n" || input_confirm == "sim" || input_confirm == "nao" || input_confirm == "não")
         {
             validation = false; // Se o valor for válido
+        }
+
+        if (input_confirm == "sim")
+        {
+            input_confirm = "s";
+        }
+        else if (input_confirm == "nao" || input_confirm == "não")
+        {
+            input_confirm = "n";
         }
 
         if (input_confirm == "s")
