@@ -72,7 +72,7 @@ static void Diagnostic()
         age = calc.convertStringDouble(age_temp);
         #pragma warning restore CS8604 // O próximo 'if' corrige este problema, mas o visual studio não reconhece.
 
-        if (age > 0.0 && validator == true)
+        if (age >= 1.0 && validator == true)
             {
                 validation = false; // Se o valor for válido
             }
